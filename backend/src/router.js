@@ -6,8 +6,10 @@ const router = express.Router()
 
 router.get('/tasks', taskControllers.getAll)
 
-router.post('/tasks', tasksMiddlewares.validateBody, taskControllers.createTask)
+router.post('/tasks', tasksMiddlewares.validateTitle, taskControllers.createTask)
 
 router.delete('/tasks/:id', taskControllers.deleteTask)
+
+router.put('/tasks/:id', tasksMiddlewares.validateStatus, taskControllers.updatedTask)
 
 module.exports = router
